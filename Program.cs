@@ -17,7 +17,8 @@ namespace MermaidProcessingLLC
     class p
     {
 
-        private static decimal subTotal; 
+        private static double taxTotal,
+            subTotal;
         static public void Main ()
         {
 
@@ -32,73 +33,68 @@ namespace MermaidProcessingLLC
             WriteLine("Please enter item price");
             itemPrice = double.Parse(ReadLine());
 
-            RecieptItem reciept = new RecieptItem(partName, itemPrice);
+           
 
-            DisplayResults(subTotal, itemPrice, partName);
-            ReadKey();
+            Reciept.DisplayResults(subTotal, taxTotal, itemPrice, partName);
+            
 
 
-
-        }
-
-        
-
-        // private double CalculateProcessingCharge()
-
-        static void DisplayResults(decimal subTotal, double itemPrice, string partName)
-        {
-            Clear();
-            WriteLine("Mermaid Processing LLC \n \n");
-            WriteLine("{0,-30}{1,12:C}", partName, itemPrice);
-            WriteLine("---------------------------------------");
-            WriteLine("Sales Tax: 7.95%");
-            WriteLine("{0,-30}{1,12:C}", "Sub Total: ", subTotal);
 
         }
-
 
     }
 }
-    class Reciept
+class Reciept
+{
+        public static void ListOfPurchasedItems
     {
+
+    }
+        public static void DisplayResults(double subTotal, double taxTotal, double itemPrice, string partName)
+    {
+        Clear();
+        WriteLine("Mermaid Processing LLC \n \n");
+        WriteLine("{0,-30}{1,12:C}", partName, itemPrice);
+        WriteLine("-------------------------------------------");
+        WriteLine("Sales Tax: 7.95%");
+        WriteLine("{0,-30}{1,12:C2}", "Sub Total: ",  subTotal);
+
+    }
+
+    public double CalculateTax(double taxTotal, double itemPrice)
+        {
+         taxTotal = itemPrice * .0795;
+        return taxTotal;
+        }
+
+    public double CalculateSubTotal(double itemPrice, double taxTotal, double subTotal)
+    {
+        subTotal = taxTotal + itemPrice;
+        return subTotal;
+    }
+
+    }
+
+class RecieptItem
+{
+    // Variables
+
     
 
-    private decimal GetSubTotal(decimal subTotal, double itemPrice)
-        {
-            return subTotal = (decimal)(7.95 * itemPrice);
-        }
 
-    }
-
-    class RecieptItem
+    // Constructors
+    public RecieptItem()
     {
-    // Variables
-   
-        private double itemPrice;
-        public string PartName { get; set; }
-
-
-        // Constructors
-        public RecieptItem(string partName, double itemPrice)
-        {
-            PartName = partName;
-            Price = itemPrice;
-        }
-
-        public double Price
-        {
-            get { return itemPrice; }
-            set
-            {
-                if (value > 0)
-                    itemPrice = value;
-                else
-                    itemPrice = 1;
-            }
-        }
-
+       
 
     }
+
+}
+           
+        
+
+
+    
 
 
 /* class reciept
