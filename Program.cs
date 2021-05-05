@@ -16,40 +16,20 @@ namespace MermaidProcessingLLC
 {
     class p
     {
-
-        private static double taxTotal,
-            subTotal;
-        static public void Main ()
+        static public void Main(string iName, double iPrice)
         {
-
-            string partName;
+            string itemName;
             double itemPrice;
-           
 
-
-            WriteLine("Please enter item name");
-            partName = ReadLine();
-
-            WriteLine("Please enter item price");
-            itemPrice = double.Parse(ReadLine());
-
-           
-
-            Reciept.DisplayResults(subTotal, taxTotal, itemPrice, partName);
-            
-
-
-
+            itemName = iName;
+            itemPrice = iPrice;
         }
-
     }
 }
 class Reciept
-{
-        public static void ListOfPurchasedItems
-    {
-
-    }
+{  
+        List<RecieptItem> itemList = new List<RecieptItem>();
+    
         public static void DisplayResults(double subTotal, double taxTotal, double itemPrice, string partName)
     {
         Clear();
@@ -58,7 +38,6 @@ class Reciept
         WriteLine("-------------------------------------------");
         WriteLine("Sales Tax: 7.95%");
         WriteLine("{0,-30}{1,12:C2}", "Sub Total: ",  subTotal);
-
     }
 
     public double CalculateTax(double taxTotal, double itemPrice)
@@ -68,27 +47,16 @@ class Reciept
         }
 
     public double CalculateSubTotal(double itemPrice, double taxTotal, double subTotal)
-    {
+        {
         subTotal = taxTotal + itemPrice;
         return subTotal;
-    }
+        }
 
-    }
+}
 
 class RecieptItem
 {
-    // Variables
-
     
-
-
-    // Constructors
-    public RecieptItem()
-    {
-       
-
-    }
-
 }
            
         
