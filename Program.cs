@@ -16,13 +16,22 @@ namespace MermaidProcessingLLC
 {
     class p
     {
-        static public void Main(string iName, double iPrice)
+        static public void Main()
         {
-            string itemName;
-            double itemPrice;
 
-            itemName = iName;
-            itemPrice = iPrice;
+            var itemNameFunction = "Item Name: ";
+            var itemPriceFunction = "Item Price: ";
+
+            Console.WriteLine("Press 'N' to quit\n");
+            while (Console.KeyAvailable == false)
+            {
+                
+                Console.Write(itemNameFunction);
+                Console.ReadLine();
+
+                Console.Write(itemPriceFunction);
+                Console.ReadLine();
+            }
         }
     }
 }
@@ -56,6 +65,9 @@ class Reciept
 
 class RecieptItem
 {
+    public string itemName;
+    public double itemPrice;
+
     
 }
            
