@@ -19,31 +19,44 @@ namespace MermaidProcessingLLC
         static public void Main()
         {
 
+            Boolean keepGoing = false;
             var itemNameFunction = "Item Name: ";
             var itemPriceFunction = "Item Price: ";
 
-            Console.WriteLine("Press 'N' to quit\n");
-            while (Console.KeyAvailable == false)
+            
+
+          
+            while (keepGoing == false)
             {
                 
-                Console.Write(itemNameFunction);
-                Console.ReadLine();
+                    Write(itemNameFunction);
+                    RecieptItem.itemName = Convert.ToString(ReadLine());
+                    
+                    Console.Write(itemPriceFunction);
+                    RecieptItem.itemPrice = Convert.ToDouble(ReadLine());
 
-                Console.Write(itemPriceFunction);
-                Console.ReadLine();
+                Console.WriteLine("Press 'N' if you are done; Press 'Enter' to keep going");
+                Read();
+                     if(true)
+                    {
+                    keepGoing = false;
+                    
+                     }
             }
+            
         }
     }
 }
 class Reciept
 {  
         List<RecieptItem> itemList = new List<RecieptItem>();
+        
     
-        public static void DisplayResults(double subTotal, double taxTotal, double itemPrice, string partName)
+        public static void DisplayResults(double subTotal, double taxTotal, double itemPrice, string itemName)
     {
         Clear();
         WriteLine("Mermaid Processing LLC \n \n");
-        WriteLine("{0,-30}{1,12:C}", partName, itemPrice);
+        WriteLine("{0,-30}{1,12:C}", itemName, itemPrice);
         WriteLine("-------------------------------------------");
         WriteLine("Sales Tax: 7.95%");
         WriteLine("{0,-30}{1,12:C2}", "Sub Total: ",  subTotal);
@@ -65,8 +78,8 @@ class Reciept
 
 class RecieptItem
 {
-    public string itemName;
-    public double itemPrice;
+    public static string itemName;
+    public static double itemPrice;
 
     
 }
